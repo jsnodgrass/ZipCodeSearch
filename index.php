@@ -25,19 +25,14 @@ else
   </form>  
 </div>
 
-<div class="results">
 <?php
 if ($Action == 1)
     {
         $Location = SearchZip($Zipcode);
         $ShowLocation = Results($Location);
         echo $ShowLocation;
-    }   
-?>    
-</div>
-
-
-<?php
+    }
+    
 include("footer.php")
 ?>
 

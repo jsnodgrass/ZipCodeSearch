@@ -25,13 +25,18 @@ function Results($Location)
 {
     if ($Location == "")
     {
-        $output = '<span class=test>No Match Found, Please Try Again!</span>';
+        $output = '<div class="badresult">';
+        $output .= 'No Match Found, Please Try Again!</div>';
     }
     else
-    {   
-        $output = '<h4>' . $Location[3] . ", " . $Location[4] . "</h4><br>";
+    {
+        $output = '<div class="results">';
+        $output .= '<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center='.$Location[1].','.$Location[2].'&zoom=9&size=400x400&maptype=roadmap
+        &markers=color:blue%7Clabel:%7C'.$Location[1].','.$Location[2].'&sensor=false">';
+        $output .= '<h4>' . $Location[3] . ", " . $Location[4] . "</h4><br>";
         $output .= '<h5>Latitude:  ' . $Location[1] . "</h5><br>";
-        $output .= '<h5>Longitude: ' . $Location[2] . "</h5><br>";
+        $output .= '<h5>Longitude: ' . $Location[2] . "</h5><br></div>";
+
         //echo $Location[0] . "<br>";
     }
 

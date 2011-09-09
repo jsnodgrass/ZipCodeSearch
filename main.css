@@ -38,9 +38,6 @@ h5	{
 	font-size:15px;
 }
 
-.test	{
-	color: red;
-}
 
 #search	{
 	margin-left: 40px;
@@ -59,7 +56,16 @@ h5	{
 }
 
 .results {
-	width:700px; 
+	width:700px;
+	height: 400px;
+	margin:10px auto; 
+	border:1px solid #CCC; 
+	padding:20px;
+}
+.badresult {
+	color: red;
+	width:700px;
+	height: inherit;
 	margin:10px auto; 
 	border:1px solid #CCC; 
 	padding:20px;
@@ -77,8 +83,6 @@ label {
 	width: 150px;
 }
 
-
-
 #header	{
 	background-image:url('img/header.gif');
 	width:700px; 
@@ -93,4 +97,9 @@ label {
 	text-transform:lowercase;
 	text-align:center;
 	margin-top:-5px;
+}
+
+#map {
+	float: right;
+	margin-right: 50px;
 }
