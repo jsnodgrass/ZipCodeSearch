@@ -5,19 +5,17 @@ include_once("functions.php");
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
-if (!isset($_REQUEST['Action']))
+if (!isset($_GET['Zip']))
 {
-    $Action = 0;
     $Zipcode = "";
 }
 else
 {
-    $Action = $_REQUEST['Action'];
-    $Zipcode = $_POST['Zip'];
+    $Zipcode = $_GET['Zip'];
 }
 ?>
 <div class="main">
-  <form name="ZipCode" action="index.php?Action=1" onsubmit="return validateForm()" method="post">
+  <form name="ZipCode" action="index.php" onsubmit="return validateForm()" method="GET">
   
      <label for="Zip">Enter Zip Code:</label><input name="Zip" type="text" value="<?php echo $Zipcode?>"/>
      <input id="search" name="submit" type="Submit" value="SEARCH" onclick="validate();" />
@@ -26,11 +24,11 @@ else
 </div>
 
 <?php
-if ($Action == 1)
+if (isset($_GET['Zip']))
     {
         $Location = SearchZip($Zipcode);
-        $ShowLocation = Results($Location);
-        echo $ShowLocation;
+        //$ShowLocation = Results2($Location);
+        echo $Location;
     }
     
 include("footer.php")
