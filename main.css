@@ -1,0 +1,96 @@
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em,
+font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
+ tfoot, thead, tr, th, td {
+border:0pt none;
+font-family:inherit;
+font-size:100%;
+font-style:inherit;
+font-weight:inherit;
+margin:0pt;
+padding:0pt;
+vertical-align:baseline;
+}
+
+h1,h2,h3,h4	{
+	font-size:40px;
+	color:black;
+	font-family:"Times New Roman", Times, serif;
+	font-style:italic;	
+}
+
+h1	{
+	font-weight:bold;
+}
+
+h2	{
+	font-size:30px;
+}
+
+h3	{
+	font-size:25px;
+}
+
+h4	{
+	font-size:20px;
+}
+
+h5	{
+	font-size:15px;
+}
+
+.test	{
+	color: red;
+}
+
+#search	{
+	margin-left: 40px;
+}
+
+
+.center	{
+	text-align:center;
+}
+
+.main {
+	width:700px; 
+	margin:10px auto; 
+	border:1px solid #CCC; 
+	padding:20px;
+}
+
+.results {
+	width:700px; 
+	margin:10px auto; 
+	border:1px solid #CCC; 
+	padding:20px;
+}
+
+ul li {
+	list-style:none; 
+	clear:both;
+	display: inline;
+}
+
+label {
+	float:left; 
+	margin-right:10px; 
+	width: 150px;
+}
+
+
+
+#header	{
+	background-image:url('img/header.gif');
+	width:700px; 
+	margin:10px auto; 
+	padding:20px;
+	margin-bottom:-10px;
+}
+
+#footer	{
+	color:#666666;
+	font-size:12px;
+	text-transform:lowercase;
+	text-align:center;
+	margin-top:-5px;
+}
