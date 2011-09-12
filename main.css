@@ -11,6 +11,16 @@ padding:0pt;
 vertical-align:baseline;
 }
 
+html	{
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
 h1,h2,h3,h4	{
 	font-size:40px;
 	color:black;
@@ -57,7 +67,7 @@ h5	{
 
 .results {
 	width:700px;
-	height:450px;
+	height:500px;
 	margin:10px auto; 
 	border:1px solid #CCC; 
 	padding:20px;
@@ -100,7 +110,9 @@ label {
 }
 
 #map {
+	width:400px;
+	height:400px; 
+	padding:20px;
+	margin-top:50px;
 	float: right;
-	margin-right: 10px;
-	margin-top: 40px;
 }

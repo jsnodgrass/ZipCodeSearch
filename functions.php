@@ -1,5 +1,6 @@
 <?php
 
+
 function SearchZip($searchzip)
 {
     # Open the File.
@@ -25,55 +26,54 @@ function SearchZip($searchzip)
          }
          fclose($handle);
      }
-    if (count($csvarray) == 0)
+     
+     return $csvarray;
+}
+
+function results($locarray)
+{
+
+    if (count($locarray) == 0)
     {
         $output = '<div class="badresult">';
         $output .= 'No Match Found, Please Try Again!</div>';
     }
     else
     {
-        //print_r($csvarray);
+        //print_r($locarray);
         $output = '<div class="results">';
-       $output .= '<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center='.$csvarray[0][1].','.$csvarray[0][2].'&zoom=9&size=400x400&maptype=roadmap
-       &markers=color:blue%7Clabel:%7C'.$csvarray[0][1].','.$csvarray[0][2].'&sensor=false">';
-        $output .= '<ul><li><h3>Zip matches the following towns in '.$csvarray[0][4].'<h3></li><br>';
-        foreach ($csvarray as $town)
+       
+       //this is the static map
+       //$output .= '<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center='.$locarray[0][1].','.$locarray[0][2].'&zoom=9&size=400x400&maptype=roadmap
+       //&markers=color:blue%7Clabel:%7C'.$locarray[0][1].','.$locarray[0][2].'&sensor=false">';
+       
+       $output .='<span id="map"></span>';
+       
+        $output .= '<ul><li><h3>Zip matches the following towns in '.$locarray[0][4].'<h3></li><br>';
+        foreach ($locarray as $town)
         {
             $output .= '<li>';
             $output .= '<h4>'.$town[3].'</h4>';
             $output .= '</li><br>';
         }
-          $output .= '<li><h5>Latitude:  ' . $csvarray[0][1] . '</h5></li>';
-          $output .= '<li><h5>Longitude: ' . $csvarray[0][2] . '</h5></li>';
-        $output .= '</ul></div>';
+          $output .= '<li><h5>Latitude:  ' . $locarray[0][1] . '</h5></li>';
+          $output .= '<li><h5>Longitude: ' . $locarray[0][2] . '</h5></li>';
+          $output .= '</ul></div>';
     }
         return $output;
-    }
-
-
-
-/*
-function Results($Location)
-{
-    if ($Location == "")
-    {
-        $output = '<div class="badresult">';
-        $output .= 'No Match Found, Please Try Again!</div>';
-    }
-    else
-    {
-        $output = '<div class="results">';
-        //$output .= '<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center='.$Location[1].','.$Location[2].'&zoom=9&size=400x400&maptype=roadmap
-       //&markers=color:blue%7Clabel:%7C'.$Location[1].','.$Location[2].'&sensor=false">';
-        $output .= '<h4>' . $Location[3] . ', ' . $Location[4] . '</h4><br>';
-        $output .= '<h5>Latitude:  ' . $Location[1] . '</h5><br>';
-        $output .= '<h5>Longitude: ' . $Location[2] . '</h5><br></div>';
-
-        //echo $Location[0] . "<br>";
-    }
-
-return $output;
 }
-*/
+        
+function maplat($location)
+{
+    $newlatlng=$location[0][1];
+    return $newlatlng;
+}
+
+function maplng($location)
+{
+    $newlatlng=$location[0][2];
+    return $newlatlng;
+}
+    
 ?>
 

@@ -27,10 +27,14 @@ else
 if (isset($_GET['Zip']))
     {
         $Location = SearchZip($Zipcode);
-        //$ShowLocation = Results2($Location);
-        echo $Location;
+        //print_r($Location);
+        $GetResult = results($Location);
+        echo $GetResult;
+        //echo maplatlng($Location);
+?>
+        <script type="text/javascript">initialize(<?php echo maplat($Location);?>, <?php echo maplng($Location); ?>)</script>
+<?php
     }
     
 include("footer.php")
 ?>
-
