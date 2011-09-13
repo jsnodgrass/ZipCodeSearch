@@ -1,33 +1,13 @@
 <?php
 
-
-function SearchZip($searchzip)
-{
-    # Open the File.
-     if (($handle = fopen("zipcode-database.csv", "r")) !== FALSE) {
-         # Set the parent multidimensional array key to 0.
-         $nn = 0;
-         $csvarray = array();
-         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            //echo $nn . "<br>";
-            if ($searchzip == $data[0])
-            {
-            # Count the total keys in the row.
-             $c = count($data);
-             # Populate the multidimensional array.
-             for ($x=0;$x<$c;$x++)
-             {
-                echo '<pre>';
-                 $csvarray[$nn][$x] = $data[$x];
-                echo '<pre>';
-             }
-             $nn++;
-            }
-         }
-         fclose($handle);
-     }
-     
-     return $csvarray;
+function dbQuery($query) {
+	$result = mysql_query($query);
+	$output_array = array();
+	while ($row = mysql_fetch_assoc($result))
+        {
+		$output_array[] = $row;
+	}
+	return $output_array;
 }
 
 function results($locarray)
@@ -40,24 +20,18 @@ function results($locarray)
     }
     else
     {
-        //print_r($locarray);
         $output = '<div class="results">';
        
-       //this is the static map
-       //$output .= '<img id="map" src="http://maps.googleapis.com/maps/api/staticmap?center='.$locarray[0][1].','.$locarray[0][2].'&zoom=9&size=400x400&maptype=roadmap
-       //&markers=color:blue%7Clabel:%7C'.$locarray[0][1].','.$locarray[0][2].'&sensor=false">';
-       
-       $output .='<span id="map"></span>';
-       
-        $output .= '<ul><li><h3>Zip matches the following towns in '.$locarray[0][4].'<h3></li><br>';
+        $output .= '<ul><li><h3>Zip matches the following towns/citys in '.$locarray[0]['State'].'<h3></li><br>';
+        $output .='<span id="map"></span>';
         foreach ($locarray as $town)
         {
             $output .= '<li>';
-            $output .= '<h4>'.$town[3].'</h4>';
+            $output .= '<h4>'.$town['City'].'</h4>';
             $output .= '</li><br>';
         }
-          $output .= '<li><h5>Latitude:  ' . $locarray[0][1] . '</h5></li>';
-          $output .= '<li><h5>Longitude: ' . $locarray[0][2] . '</h5></li>';
+          $output .= '<li><h5>Latitude:  ' . round($locarray[0]['Latitude'],6) . '</h5></li>';
+          $output .= '<li><h5>Longitude: ' . round($locarray[0]['Longitude'],6) . '</h5></li>';
           $output .= '</ul></div>';
     }
         return $output;
@@ -65,13 +39,13 @@ function results($locarray)
         
 function maplat($location)
 {
-    $newlatlng=$location[0][1];
+    $newlatlng=$location[0]['Latitude'];
     return $newlatlng;
 }
 
 function maplng($location)
 {
-    $newlatlng=$location[0][2];
+    $newlatlng=$location[0]['Longitude'];
     return $newlatlng;
 }
     

@@ -75,7 +75,7 @@ h5	{
 .badresult {
 	color: red;
 	width:700px;
-	height: inherit;
+	height: 70px;
 	margin:10px auto; 
 	border:1px solid #CCC; 
 	padding:20px;
@@ -94,7 +94,6 @@ label {
 }
 
 #header	{
-	background-image:url('img/header.gif');
 	width:700px; 
 	margin:10px auto; 
 	padding:20px;
@@ -113,6 +112,5 @@ label {
 	width:400px;
 	height:400px; 
 	padding:20px;
-	margin-top:50px;
 	float: right;
 }

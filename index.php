@@ -1,6 +1,7 @@
 <?php 
 include("header.php");
-include_once("functions.php");
+require_once("connection.php");
+require_once("functions.php");
 
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
@@ -26,14 +27,17 @@ else
 <?php
 if (isset($_GET['Zip']))
     {
-        $Location = SearchZip($Zipcode);
-        //print_r($Location);
+        $searchquery= "SELECT ZipID, ZipCode, City, State, Latitude, Longitude FROM ZipCodes WHERE Zipcode=$Zipcode";
+        $Location = dbQuery($searchquery);    
         $GetResult = results($Location);
         echo $GetResult;
-        //echo maplatlng($Location);
+        if (count($Location) !== 0)
+        {
+
 ?>
         <script type="text/javascript">initialize(<?php echo maplat($Location);?>, <?php echo maplng($Location); ?>)</script>
 <?php
+        }
     }
     
 include("footer.php")
